@@ -1,0 +1,73 @@
+<section>
+
+    <span class="select-category">
+
+        <span>
+            <b>Телеграм код:</b>
+            &nbsp;&nbsp;
+            <button mat-stroked-button>{{telegram_code}}</button>
+            &nbsp;&nbsp;
+            <button *ngIf="!telegram_code" [disabled]="pennding" (click)="patchTelegramCode()" mat-raised-button
+                color="accent">Создать</button>
+            <button *ngIf="telegram_code" [disabled]="pennding" (click)="patchTelegramCode()" mat-raised-button
+                color="primary">Изменить</button>
+        </span>
+
+        <span>
+            <b>Код смены:</b>
+            &nbsp;&nbsp;
+            <button mat-stroked-button>{{shift}}</button>
+            &nbsp;&nbsp;
+            <button *ngIf="shift" [disabled]="pennding" (click)="patchShift()" mat-raised-button
+                color="primary">Изменить</button>
+        </span>
+
+        <mat-form-field class="mat-select" *ngIf="shiftChange" appearance="fill">
+            <mat-label>Пересменка</mat-label>
+            <mat-select [disabled]="pennding" [(ngModel)]="shiftChange" (ngModelChange)="pathShiftChange()">
+                <mat-option *ngFor="let oclock of oclocks" [value]="oclock">{{oclock}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </span>
+
+    <br><br>
+
+    <table class="demo" *ngIf="!loading && telegrams && telegrams.length > 0">
+        <thead>
+            <th>ID Чата</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let telegram of telegrams">
+                <td>{{telegram.chat_id}}</td>
+                <td>{{telegram.user}}</td>
+                <td>{{telegram.phone}}</td>
+                <td>
+                    <mat-select [disabled]="loading || pennding" [(ngModel)]="telegram.status"
+                        (ngModelChange)="OnStatusChange(telegram)">
+                        <mat-option value="seller">Официант</mat-option>
+                        <mat-option value="admin">Админ</mat-option>
+                    </mat-select>
+                </td>
+                <td>
+                    <button mat-button color="warn" (click)="deleteTelegram(telegram._id)">Удалить</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1 *ngIf="!loading && telegrams && telegrams.length == 0">Telegram аккаунтов нет</h1>
+
+    <ng-container *ngIf="loading">
+        <br><br>
+        <mat-spinner></mat-spinner>
+    </ng-container>
+
+</section>
+
+
+<h3 class="pc">Только для PC версии</h3>

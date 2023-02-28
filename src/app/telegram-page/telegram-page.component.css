@@ -1,0 +1,47 @@
+section {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select-category {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.demo {
+    width: 90%;
+    border-collapse:collapse;
+    padding:5px;
+    text-align: center;
+    font-weight: normal;
+}
+
+
+.demo td {
+    border:1px solid #7b1fa2;
+    padding:5px;
+}
+
+.pc {
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+@media screen and (max-width: 800px) { 
+
+    section {
+        display: none;
+    }
+
+    .pc {
+        display: block;
+    }
+
+ }

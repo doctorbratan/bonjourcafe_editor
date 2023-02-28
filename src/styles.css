@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { 
+    height: 100%;
+    margin: 0; 
+    padding: 0; 
+    background-color: #303030; 
+    font-family: "Roboto", "Helvetica Neue", sans-serif; 
+    color: white;
+}
+
+
+a {
+    text-decoration-line: none;
+    color: white;
+}
+
+.mat-select {
+    max-width: 200px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+    .icon {
+        transform: scale(0.8);
+    }
+
+    .mat-button {
+        font-size: 12px;
+    }
+
+    .mat-select {
+        font-size: 10px;
+        max-width: 150px;
+    }
+
+}
